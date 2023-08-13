@@ -391,14 +391,14 @@ button svg path{
   align-items: center;
   justify-content: space-evenly;
   color: white;
-  gap: 2rem;
+  gap: 1rem;
   border: 3px solid #725AC1;
   border-radius: 0.8rem;
   padding: 2rem;
   margin-bottom: 2rem;
 }
 .imgDiv{
-  width: min(30vw,400px);
+  width: min(40vw,400px);
   height: 30vh;
 }
 .postImg{
@@ -481,7 +481,7 @@ nav{
   transition-delay: calc(60ms * var(--delay));
 }
 .dropdown-btn:focus + .dropdown-content li {
-  left: 0;
+  left: -10%;
 }
 .dropdown-btn:focus + .dropdown-content {
   visibility: visible;
@@ -535,6 +535,14 @@ nav{
   color: #9286bf;
   font-size: 1.5rem;
   flex-wrap: wrap;
+}
+.details p{
+  padding: 0;
+  margin: 0;
+}
+.details .time{
+  padding: 0;
+  margin: 0;
 }
 .img-con{
  
@@ -657,6 +665,7 @@ nav{
   border: 2px solid #725AC1;
 }
 .p-btn{
+  width: 100px;
   color: white;
   background-color: #725AC1;
   border: 2px solid #212529;
@@ -800,7 +809,68 @@ nav{
 }
 
 
+.card-main{
+  position: absolute;
+  left: 10vw;
+  width: 80vw;
+  margin-top: -100px;
+}
+.card-body{
+  border: 2px solid #725AC1;
+  margin: 0.5rem;
+  border-radius: 10px;
+  color:#725AC1;
+  background-color: #212529;
+}
+.card{
+  background-color: #212529 !important;
+  border: none;
+}
+.card.shadow-0{
+  border: none !important;
+}
+.comInput{
+  background-color: #212529;
+  border-radius: 10px;
+  border: 2px solid #9286bf;
+  color: #725AC1;
+  width: 50vw !important;
+  margin-bottom: 0.5rem;
+  margin-left: 1vw;
+}
+.comInput::placeholder{
+  color: #725AC1;
+}
+.comInput:focus{
+  box-shadow: none;
+  border: 2px solid #725AC1;
+  color: #725AC1;
+  background-color: #212529;
+}
+.comSend{
+  margin-top: 1rem;
+  display: flex;
+  align-items: baseline;
+  justify-content: baseline;
+  width: 70vw;
+}
+
+.comSend button{
+  background-color: #725AC1;
+  color: #212529;
+  border: none;
+  border-radius: 10px;
+  width: 10vw;
+  height: 2rem;
+  margin-left: 2vw;
+  margin-top: 3px;
+}
+
+
 @media screen and (max-width:640px){
+  .dropdown{
+    min-width: 50px;
+  }
   .blog-con .head{
     font-size: 30px;
   }
@@ -833,3 +903,5 @@ nav{
     text-align: center;
   }
 }
+
+

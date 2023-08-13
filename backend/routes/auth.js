@@ -11,6 +11,7 @@ const multer=require('multer');
 const uploadMiddle=multer({dest: 'uploads/'});
 const fs=require('fs');
 const { error } = require("console");
+const { json } = require("react-router-dom");
 
 dotenv.config();
 const JWT_SECRET=process.env.JWT_SECRET;
@@ -197,11 +198,18 @@ router.get("/blogs",fetchUser,async (req,res)=>{
   }
 })
 
-router.delete('/deleteblog/:id',async (req,res)=>{
+router.delete('/deleteblog/:id',fetchUser,async (req,res)=>{
   try {
-    const id=req.params.id;
-    const blog = await Post.findByIdAndDelete(id);
-    res.json({success:true});
+    const {id}=req.params;
+    const info = await Post.findById(id);
+    
+    if(JSON.stringify(info.author) === JSON.stringify(req.user.id)){
+      const blog = await Post.findByIdAndDelete(id);
+      res.json({success:true});
+    }
+    else{
+      res.json({success:false});
+    }
   } catch (error) {
     res.json({success:false,error:"Internal Server Error"})
   }

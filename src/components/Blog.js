@@ -1,11 +1,12 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import blogContext from '../context/blogs/blogContext'
 import { useNavigate, useParams } from 'react-router-dom';
 import { format } from 'date-fns';
 import Navbar from './Navbar'
-import { CommentRoute, CommentsRoute, LikesRoute, isLikedRoute } from '../utils/ApiRoutes';
+import { CommentRoute, CommentsRoute, DeleteRoute, LikesRoute, isLikedRoute } from '../utils/ApiRoutes';
 import { ToastContainer, toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
+import CommentSection from './CommentSection';
 
 
 export default function Blog() {
@@ -22,29 +23,38 @@ export default function Blog() {
       const [likes, setlikes] = useState(0);
       const [isliked, setisliked] = useState(false);
       const [comments, setcomments] = useState([]);
-      const [comment, setcomment] = useState(false);
+      const [comment, setcomment] = useState('');
 
     const commentFunc=async(id)=>{
       const response  = await fetch(`${CommentsRoute}/${id}`);
       const json= await response.json();
       if(json.success){
-        setcomments(json.comms);
+        let arr = json.comms.reverse();
+        setcomments(arr);
       }
       else{
-        toast.error("Error getting Commenting");
+        toast.error("Error getting Commenting",toastoptions);
       }
     }
 
-    const putComment= async (com)=>{
-      const response  = await fetch(`${CommentRoute}/${id}`);
+    const putComment= async ()=>{
+      const response  = await fetch(`${CommentRoute}/${id}`,{
+        method: 'put',
+      headers: {
+        'Content-Type': 'application/json',
+        'auth-token': localStorage.getItem('token')
+      },
+      body: JSON.stringify({
+        comment:comment
+      })
+      });
       const json= await response.json();
       if(json.success){
-        let comms = comments;
-        comms.push({comment:com,name:currUser.name,avatar:currUser.Avatar});
-        setcomments(comms);
+        setcomment('');
+        commentFunc(id);
       }
       else{
-        toast.error("Error Commenting");
+        toast.error("Error Commenting",toastoptions);
       }
     }
 
@@ -77,7 +87,8 @@ export default function Blog() {
         }
       }
 
-
+      const ref = useRef(null)
+  const executeScroll = () => ref.current.scrollIntoView()
       const {id}=useParams();
       useEffect(() => {
         getBlog(id);
@@ -88,6 +99,25 @@ export default function Blog() {
 
       const handleClick=()=>{
         navigate(`/update/${id}`);
+      }
+      const handleDelete=async()=>{
+        const response = await fetch(`${DeleteRoute}/${blog._id}`,{
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+            'auth-token': localStorage.getItem('token')
+          },
+        }) 
+        const json=await response.json();
+        if(json.success){
+          toast.success("Post Deleted Successfully",toastoptions);
+          setTimeout(() => {
+            navigate('/');
+          }, 1000);
+        }
+        else{
+          toast.error("Could not delete Post",toastoptions);
+        }
       }
       return (
         <div className='main'>
@@ -116,19 +146,19 @@ export default function Blog() {
             </span>
           </button>
         </div>
+        <button onClick={executeScroll} className='p-btn'>Comments</button>
+        { currUser &&
+        currUser._id===blog.author._id?<button className='p-btn'  onClick={handleDelete}>Delete</button>:""
+      }
       </div>
             <div className="img-con">
           <img src={`http://localhost:5000/${blog.cover}`} alt="" />
           </div>
-          <p className='content' dangerouslySetInnerHTML={{ __html: blog.content }}></p>
+          <p ref={ref} className='content' dangerouslySetInnerHTML={{ __html: blog.content }}></p>
     </div>
         
       }
-      
-      
-      
-      
-      
+      <CommentSection comment={comment} comments={comments} putComment={putComment} setcomment={setcomment}/>      
       <ToastContainer/>
     </div>
   )

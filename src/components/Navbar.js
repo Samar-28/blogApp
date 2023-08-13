@@ -16,11 +16,10 @@ const Navbar = () => {
       <div className="logo">
         <h2>Blog</h2>
       </div>
-      <div className="right">
         <div className="dropdown">
           <button className="dropdown-btn">
           <img src={currUser && `data:image/svg+xml;base64,${currUser.Avatar}`} alt="" />
-            {currUser && <span className="name">{currUser.name}</span>}
+            {currUser && <span className="name">{window.screen.width>300?currUser.name:currUser.name.substring(0,5)}</span>}
             <span className="arrow"></span>
           </button>
           <ul className="dropdown-content">
@@ -29,6 +28,7 @@ const Navbar = () => {
             <li style={{"--delay":"3"}}><Link to="/">Home</Link></li>
           </ul>
         </div>
+      <div className="right">
         <button className="Btn" onClick={()=>{
           localStorage.removeItem('token');
           navigate('/login');
