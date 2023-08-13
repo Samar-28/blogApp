@@ -158,7 +158,7 @@ export default function Blog() {
         </div>
       </div>
             <div className="img-con">
-          <img src={`http://localhost:5000/${blog.cover}`} alt="" />
+          <img src={`https://blog-backend-upjh.onrender.com/${blog.cover}`} alt="" />
           </div>
           <p ref={ref} className='content' dangerouslySetInnerHTML={{ __html: blog.content }}></p>
     </div>

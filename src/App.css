@@ -401,6 +401,7 @@ button svg path{
 .imgDiv{
   width: min(40vw,400px);
   height: 30vh;
+  cursor: pointer;
 }
 .postImg{
   width: 100%;
@@ -419,11 +420,13 @@ button svg path{
   gap:1rem;
   color: #ccc;
   margin-bottom: 10px;
+  cursor: pointer;
 }
 nav{
   margin-bottom: 10vh;
 }
 .postTitle{
+  cursor: pointer;
   color: #725AC1;
   width: 100%;
   overflow-wrap: break-word;
@@ -913,7 +916,7 @@ nav{
   .contentDiv{
     width: 100%;
   }
-  .authTime,.likeDiv{
+  .authTime,.likeDiv,.likeDiv2{
     align-self: center;
   }
   .authTime{
