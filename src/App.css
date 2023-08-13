@@ -439,6 +439,7 @@ nav{
 .dropdown {
   position: relative;
   min-width: 150px;
+  z-index: 10;
 }
 .dropdown-btn {
   background: #2e2e2e;
@@ -711,6 +712,7 @@ nav{
   align-items: center;
   gap: 1rem;
   flex-wrap: wrap;
+  z-index: 1;
 }
 
 

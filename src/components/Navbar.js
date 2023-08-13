@@ -19,7 +19,7 @@ const Navbar = () => {
         <div className="dropdown">
           <button className="dropdown-btn">
           <img src={currUser && `data:image/svg+xml;base64,${currUser.Avatar}`} alt="" />
-            {currUser && <span className="name">{window.screen.width>300?currUser.name:currUser.name.substring(0,5)}</span>}
+            {currUser && <span className="name">{window.screen.width>450?currUser.name:currUser.name.substring(0,5)}</span>}
             <span className="arrow"></span>
           </button>
           <ul className="dropdown-content">
