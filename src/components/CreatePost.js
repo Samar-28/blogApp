@@ -38,7 +38,10 @@ const CreatePost = () => {
     })
     const json = await response.json()
     if(json.success){
-      navigate('/')
+      setTimeout(() => {
+        navigate('/')
+      }, 1000);
+      toast.success("Post Created successfully", toastoptions)
     }
     else{
       toast.error("Some error Occured", toastoptions)

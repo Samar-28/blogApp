@@ -17,7 +17,8 @@ const UserBlogs = () => {
       <div className='post-con'>
         <h2 className='up-head'>User Posts</h2>
       {
-      userblogs && 
+      userblogs &&
+      userblogs.length==0?<h1 style={{color: "white"}}>"No Blogs"</h1>: 
       Array.from(userblogs).map((obj,i)=>{
         return <div key={i} onClick={()=>{
           navigate(`/post/${obj._id}`)

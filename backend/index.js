@@ -11,6 +11,7 @@ const port = process.env.PORT;
 app.use(cors())
 app.use(express.json())
 app.use('/api/auth',require('./routes/auth'))
+app.use('/api/blog',require('./routes/blog'))
 app.use('/uploads', express.static(__dirname + '/uploads'));
 
 app.listen(port, () => {

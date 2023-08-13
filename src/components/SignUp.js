@@ -40,7 +40,7 @@ const SignUp = () => {
             const json = await response.json();
             if (json.success) {
                 localStorage.setItem('token', json.authtoken)
-                navigate('/login');
+                navigate('/setavatar');
             }
             else {
                 toast.error(json.error, toastoptions)

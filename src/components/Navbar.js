@@ -14,7 +14,7 @@ const Navbar = () => {
   return (
     <nav>
       <div className="logo">
-        <h2>Blog</h2>
+        <h2 style={{fontWeight:"bold"}}>.Blog</h2>
       </div>
         <div className="dropdown">
           <button className="dropdown-btn">

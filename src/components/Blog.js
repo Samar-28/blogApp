@@ -71,6 +71,9 @@ export default function Blog() {
           setisliked(json.like);
           setlikes(json.likes);
         }
+        else{
+          toast.error("Error verifying details",toastoptions);
+        }
       }
       const noOfLikes=async(id)=>{
         const response  = await fetch(`${LikesRoute}/${id}`,{
@@ -84,6 +87,9 @@ export default function Blog() {
         if(json.success){
           setlikes(json.likes);
           setisliked(json.isLiked);
+        }
+        else{
+          toast.error("Error Verifying details",toastoptions);
         }
       }
 
@@ -131,7 +137,10 @@ export default function Blog() {
             </div>
             <div className='blog-btns'>
       { currUser &&
-        currUser._id===blog.author._id?<button className='p-btn'  onClick={handleClick}>Edit</button>:""
+        currUser._id===blog.author._id?<button className='b-btn'  onClick={handleClick}>Edit</button>:""
+      }
+        { currUser &&
+        currUser._id===blog.author._id?<button className='b-btn'  onClick={handleDelete}>Delete</button>:""
       }
       <div className="likeDiv">
           <button className="l-Btn" onClick={()=>{
@@ -145,11 +154,8 @@ export default function Blog() {
               {likes}
             </span>
           </button>
+        <button onClick={executeScroll} className='b-btn'>Comments</button>
         </div>
-        <button onClick={executeScroll} className='p-btn'>Comments</button>
-        { currUser &&
-        currUser._id===blog.author._id?<button className='p-btn'  onClick={handleDelete}>Delete</button>:""
-      }
       </div>
             <div className="img-con">
           <img src={`http://localhost:5000/${blog.cover}`} alt="" />

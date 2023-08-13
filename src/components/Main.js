@@ -26,7 +26,7 @@ const Main = () => {
           <Navbar/>
         <div className='post-con'>
         {
-          blogs.map((obj,i)=>{
+          blogs.length===0?<h1 style={{color: "white", marginTop: "30vh"}}>No Blogs</h1>:blogs.map((obj,i)=>{
             return <div key={i}><Post {...obj} /></div>
           })
         }

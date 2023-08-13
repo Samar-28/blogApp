@@ -2,7 +2,15 @@ import {format} from 'date-fns'
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { LikesRoute, isLikedRoute } from '../utils/ApiRoutes';
+import { ToastContainer, toast } from 'react-toastify';
 const Post = ({_id,title,summary,cover,createdAt,author}) => {
+  const toastoptions = {
+    position: "top-right",
+    autoClose: 5000,
+    pauseOnHover: true,
+    draggable: true,
+    theme: "dark",
+}
   const navigate = useNavigate();
   const [likes, setlikes] = useState(0);
       const [isliked, setisliked] = useState(false);
@@ -20,6 +28,9 @@ const Post = ({_id,title,summary,cover,createdAt,author}) => {
           setisliked(json.like);
           setlikes(json.likes);
         }
+        else{
+          toast.error("Error Commenting",toastoptions);
+        }
       }
       const noOfLikes=async(id)=>{
         const response  = await fetch(`${LikesRoute}/${id}`,{
@@ -33,6 +44,9 @@ const Post = ({_id,title,summary,cover,createdAt,author}) => {
         if(json.success){
           setlikes(json.likes);
           setisliked(json.isLiked);
+        }
+        else{
+          toast.error("Error Commenting",toastoptions);
         }
       }
       useEffect(() => {

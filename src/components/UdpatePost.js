@@ -55,7 +55,10 @@ const UdpatePost = () => {
     })
     const json = await response.json()
     if(json.success){
-      navigate('/')
+      setTimeout(() => {
+        navigate('/')
+      }, 1000);
+      toast.success("Post Upadated Successfully",toastoptions);
     }
     else{
       toast.error("Some error Occured", toastoptions)

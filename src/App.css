@@ -121,7 +121,6 @@ body{
 }
 
 .submit {
-  border: none;
   outline: none;
   background-color: #725AC1;
   padding: 10px;
@@ -129,10 +128,12 @@ body{
   color: #fff;
   font-size: 16px;
   transform: .3s ease;
+  border: 2px solid #725AC1 !important;
 }
 
 .submit:hover {
-  background-color: #725AC1;
+  background-color: #212529;
+  color: #725AC1;
 }
 
 @keyframes pulse {
@@ -664,13 +665,34 @@ nav{
   background-color: #212529;
   border: 2px solid #725AC1;
 }
+.blog-btns{
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
 .p-btn{
+  color: white;
+  background-color: #725AC1;
+  border: 2px solid #212529;
+  padding: 5px;
+  border-radius: 7px;
+}
+.b-btn{
   width: 100px;
   color: white;
   background-color: #725AC1;
   border: 2px solid #212529;
   padding: 5px;
   border-radius: 7px;
+}
+.b-btn:hover{
+  color: #725AC1;
+  background-color: #212529;
+  border: 2px solid #725AC1;
+  padding: 5px;
+  border-radius: 5px;
 }
 .p-btn:hover{
   color: #725AC1;
@@ -680,6 +702,13 @@ nav{
   border-radius: 5px;
 }
 
+.likeDiv{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
 
 
 .l-Btn {
@@ -756,13 +785,6 @@ nav{
   transform-origin: top;
 }
 
-.blog-btns{
-  width: 90%;
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  flex-wrap: wrap;
-}
 
 
 
