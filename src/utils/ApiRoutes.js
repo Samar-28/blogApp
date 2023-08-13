@@ -12,3 +12,5 @@ export const changeName = `${host}/api/auth/changename`;
 export const changePass = `${host}/api/auth/changepass`;
 export const isLikedRoute = `${host}/api/auth/isliked`;
 export const LikesRoute = `${host}/api/auth/likes`;
+export const CommentsRoute = `${host}/api/auth/getcomments`;
+export const CommentRoute = `${host}/api/auth/comment`;

@@ -17,7 +17,7 @@ const UserBlogs = () => {
       <div className='post-con'>
         <h2 className='up-head'>User Posts</h2>
       {
-      userblogs &&
+      userblogs && 
       Array.from(userblogs).map((obj,i)=>{
         return <div key={i} onClick={()=>{
           navigate(`/post/${obj._id}`)

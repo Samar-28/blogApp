@@ -415,6 +415,7 @@ button svg path{
 .authTime{
   margin-top: 0.5rem;
   display: flex;
+  gap:1rem;
   color: #ccc;
   margin-bottom: 10px;
 }
@@ -423,6 +424,8 @@ nav{
 }
 .postTitle{
   color: #725AC1;
+  width: 100%;
+  overflow-wrap: break-word;
 }
 .main{
   display: flex;
@@ -431,7 +434,7 @@ nav{
 
 .dropdown {
   position: relative;
-  width: 200px;
+  min-width: 150px;
 }
 .dropdown-btn {
   background: #2e2e2e;
@@ -440,6 +443,7 @@ nav{
   border: none;
   color: #fff;
   display: flex;
+  gap: 1rem;
   justify-content: space-between;
   align-items: center;
   padding: 0.7em 0.5em;
@@ -517,15 +521,20 @@ nav{
   color: white;
   margin-top: 20px;
   font-size: 4rem;
+  width: 90%;
+  overflow-wrap: break-word;
+  text-align: center;
+
 }
 .blog-con .details{
   width: 100%;
   display: flex;
-  gap: 2rem;
+  gap: 1rem;
   align-items: center;
   justify-content: center;
   color: #9286bf;
   font-size: 1.5rem;
+  flex-wrap: wrap;
 }
 .img-con{
  
@@ -542,6 +551,8 @@ nav{
   color: #ccc;
   width: 90%;
   font-size: 1.4rem;
+  width: 90%;
+  overflow-wrap: break-word;
 }
 .profile-con{
   display: flex;
@@ -741,4 +752,84 @@ nav{
   display: flex;
   justify-content: center;
   gap: 2rem;
+  flex-wrap: wrap;
+}
+
+
+
+
+
+.ava-con{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 3rem;
+  background-color: #131324;
+  height: 100vh;
+  width: 100vw;
+}
+.loader{
+  max-inline-size: 100%;
+}
+.titleCon h1{
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+.avatars{
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.Avatar{
+  border: 0.4rem solid transparent;
+  padding: 0.4rem;
+  border-radius: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s ease-in-out;
+}
+.Avatar img{
+  height: 6rem;
+}
+.selected{
+  border: 0.4rem solid #dc2f55;
+}
+
+
+@media screen and (max-width:640px){
+  .blog-con .head{
+    font-size: 30px;
+  }
+  .blog-con .details{
+    font-size: 20px;
+  }
+  .post{
+    flex-direction: column;
+    width: 80vw;
+  }
+  .post-con{
+    width: 100%;
+  }
+  .imgDiv{
+    width: 100%;
+    height: auto;
+  }
+  .contentDiv{
+    width: 100%;
+  }
+  .authTime,.likeDiv{
+    align-self: center;
+  }
+  .authTime{
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .postTitle,.postSummary{
+    text-align: center;
+  }
 }

@@ -190,7 +190,7 @@ router.get("/getblog/:id",async (req,res)=>{
 router.get("/blogs",fetchUser,async (req,res)=>{
   try {
     const id=req.user.id;
-    const blog = await Post.find({author:id});
+    const blog = await Post.find({author:id}).populate('author',['name']);
     res.json({success:true,blog});
   } catch (error) {
     res.json({success:false,error:"Internal Server Error"})
@@ -247,9 +247,10 @@ router.put('/changename',fetchUser,async (req,res)=>{
   }
 })
 
-router.post('/comment',fetchUser,async(req,res)=>{
+router.put('/comment/:id',fetchUser,async(req,res)=>{
   try{
-    const {id,comment}=req.body;
+    const {id} = req.params
+    const {comment}=req.body;
     const info = await Post.findById(id);
     let comms=info.comments;
     const user = await User.findById(req.user.id);
@@ -257,7 +258,7 @@ router.post('/comment',fetchUser,async(req,res)=>{
     const post= await Post.findByIdAndUpdate(id,{comments:comms});
     return res.json({success:true});
   } catch (error) {
-    return res.json({success:false,error:"Internal Server Error"})
+    return res.json({success:false,error})
   }
 })
 
@@ -312,5 +313,17 @@ router.post('/setavatar',fetchUser,async (req,res) =>{
       res.json({isSet:false,error});
   }
 })
+
+router.get('/getcomments/:id',async(req,res)=>{
+  try{
+    const id = req.params.id;
+    const info = await Post.findById(id);
+    let comms=info.comments;
+    res.json({success:true,comms});
+  } catch (error) {
+    res.json({success:false,error:"Internal Server Error"})
+  }
+})
+
 
 module.exports = router;

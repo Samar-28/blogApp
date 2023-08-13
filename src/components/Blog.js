@@ -3,14 +3,50 @@ import blogContext from '../context/blogs/blogContext'
 import { useNavigate, useParams } from 'react-router-dom';
 import { format } from 'date-fns';
 import Navbar from './Navbar'
-import { LikesRoute, isLikedRoute } from '../utils/ApiRoutes';
+import { CommentRoute, CommentsRoute, LikesRoute, isLikedRoute } from '../utils/ApiRoutes';
+import { ToastContainer, toast } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
+
 
 export default function Blog() {
+  const toastoptions = {
+    position: "top-right",
+    autoClose: 5000,
+    pauseOnHover: true,
+    draggable: true,
+    theme: "dark",
+}
     const context = useContext(blogContext);
     const navigate=useNavigate();
       const {blog,getBlog,getUser,currUser}=context;
       const [likes, setlikes] = useState(0);
       const [isliked, setisliked] = useState(false);
+      const [comments, setcomments] = useState([]);
+      const [comment, setcomment] = useState(false);
+
+    const commentFunc=async(id)=>{
+      const response  = await fetch(`${CommentsRoute}/${id}`);
+      const json= await response.json();
+      if(json.success){
+        setcomments(json.comms);
+      }
+      else{
+        toast.error("Error getting Commenting");
+      }
+    }
+
+    const putComment= async (com)=>{
+      const response  = await fetch(`${CommentRoute}/${id}`);
+      const json= await response.json();
+      if(json.success){
+        let comms = comments;
+        comms.push({comment:com,name:currUser.name,avatar:currUser.Avatar});
+        setcomments(comms);
+      }
+      else{
+        toast.error("Error Commenting");
+      }
+    }
 
       const isLikedFunc=async(id)=>{
         const response  = await fetch(`${isLikedRoute}/${id}`,{
@@ -47,6 +83,7 @@ export default function Blog() {
         getBlog(id);
         getUser();
         noOfLikes(id)
+        commentFunc(id)
       }, [])
 
       const handleClick=()=>{
@@ -87,6 +124,12 @@ export default function Blog() {
     </div>
         
       }
+      
+      
+      
+      
+      
+      <ToastContainer/>
     </div>
   )
 }

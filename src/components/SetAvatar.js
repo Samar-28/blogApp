@@ -66,10 +66,10 @@ export default function SetAvatar() {
     return (
         <>
             {
-                load?<div className="container">
+                load?<div className="ava-con">
                     <img className="loader" src={loader} alt="loader" />
                 </div>:
-            <div className="container">
+            <div className="ava-con">
                 <div className="titleCon">
                     <h1>Pick An Avatar As Your Profile Picture</h1>
                 </div>
