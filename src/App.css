@@ -1,0 +1,744 @@
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  background-color: #212529;
+  overflow-x: hidden;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 350px;
+  background-color: #212529;
+  padding: 2rem;
+  border-radius: 20px;
+  position: relative;
+  border: 2px solid #725AC1;
+}
+.form input{
+  background-color: #212529;
+  color: #ccc;
+}
+
+.title {
+  align-self: center;
+  font-size: 28px;
+  color: #725AC1;
+  font-weight: 600;
+  letter-spacing: -1px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-left: 30px;
+  margin: 0;
+}
+
+.title::before,.title::after {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  left: 0px;
+  background-color: #725AC1;
+}
+
+.title::before {
+  width: 18px;
+  height: 18px;
+  background-color: #725AC1;
+}
+
+.title::after {
+  width: 18px;
+  height: 18px;
+  animation: pulse 1s linear infinite;
+}
+
+.message, .signin {
+  color: #ccc;
+  font-size: 14px;
+}
+
+.signin {
+  text-align: center;
+}
+
+.signin a {
+  color: #725AC1;
+}
+
+.signin a:hover {
+  text-decoration: underline #725AC1;
+}
+
+.flex {
+  display: flex;
+  width: 100%;
+  gap: 6px;
+}
+
+.form label {
+  position: relative;
+}
+
+.form label .input {
+  width: 100%;
+  padding: 10px 10px 20px 10px;
+  outline: 0;
+  border: 1px solid #725AC1;
+  border-radius: 10px;
+}
+
+.form label .input + span {
+  position: absolute;
+  left: 10px;
+  top: 15px;
+  color: grey;
+  font-size: 0.9em;
+  cursor: text;
+  transition: 0.3s ease;
+}
+
+.form label .input:placeholder-shown + span {
+  top: 15px;
+  font-size: 0.9em;
+}
+
+.form label .input:focus + span,.form label .input:valid + span {
+  top: 30px;
+  font-size: 0.7em;
+  font-weight: 600;
+}
+
+.form label .input:valid + span {
+  color: green;
+}
+
+.submit {
+  border: none;
+  outline: none;
+  background-color: #725AC1;
+  padding: 10px;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 16px;
+  transform: .3s ease;
+}
+
+.submit:hover {
+  background-color: #725AC1;
+}
+
+@keyframes pulse {
+  from {
+    transform: scale(0.9);
+    opacity: 1;
+  }
+
+  to {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+
+
+.signup-con, .login-con{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.Btn {
+  --black: #000000;
+  --ch-black: #141414;
+  --eer-black: #1b1b1b;
+  --night-rider: #2e2e2e;
+  --white: #ffffff;
+  --af-white: #f3f3f3;
+  --ch-white: #e1e1e1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 45px;
+  height: 2rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition-duration: .3s;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
+  background-color: var(--night-rider);
+}
+
+/* plus sign */
+.sign {
+  width: 100%;
+  transition-duration: .3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sign svg {
+  width: 17px;
+}
+
+.sign svg path {
+  fill: var(--af-white);
+}
+/* text */
+.text {
+  position: absolute;
+  right: 0%;
+  width: 0%;
+  opacity: 0;
+  color: var(--af-white);
+  font-size: 1.2em;
+  font-weight: 600;
+  transition-duration: .3s;
+}
+/* hover effect on button width */
+.Btn:hover {
+  width: 125px;
+  border-radius: 5px;
+  transition-duration: .3s;
+}
+
+.Btn:hover .sign {
+  width: 30%;
+  transition-duration: .3s;
+  padding-left: 20px;
+}
+/* hover effect button's text */
+.Btn:hover .text {
+  opacity: 1;
+  width: 70%;
+  transition-duration: .3s;
+  padding-right: 10px;
+}
+/* button click effect*/
+.Btn:active {
+  transform: translate(2px ,2px);
+}
+
+nav{
+  position: fixed;
+  width: 100vw;
+  background-color: #725AC1;
+  height: 6.5vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 5vw;
+  z-index: 500;
+}
+
+.right{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+.create{
+  display: flex;
+  justify-content: center;
+}
+.create-form{
+  width: 80vw;
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.create-form button{
+  width: 50%;
+  align-self: center;
+  padding: 0.5rem;
+}
+
+.f-btn{
+  z-index: 1;
+  margin: 15px;
+  padding: 15px 30px;
+  text-align: center;
+  font-size: 18px;
+  letter-spacing: 1px;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 5px;
+  color: white;
+  border: 2px solid #725AC1;
+  box-shadow: inset 0 -100px 0 0 #725AC1;
+}
+.f-btn:active{
+  transform: scale(0.9);
+}
+
+.input-container {
+  position: relative;
+  margin: 20px 0; 
+  width: 100%;
+}
+
+.input-container input {
+  font-size: 20px;
+  width: 100%;
+  border: none;
+  border-bottom: 2px solid #ccc;
+  padding: 5px 0;
+  background-color: transparent;
+  outline: none;
+  color: #ccc;
+}
+
+.input-container .label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: #ccc;
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.input-container input:focus ~ .label,
+.input-container input:valid ~ .label {
+  top: -20px;
+  font-size: 16px;
+  color: #ccc;
+}
+
+.input-container .underline {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background-color: #725AC1;
+  transform: scaleX(0);
+  transition: all 0.3s ease;
+}
+
+.input-container input:focus ~ .underline,
+.input-container input:valid ~ .underline {
+  transform: scaleX(1);
+}
+.create-form input[type='file']{
+  margin: 20px 0;
+  color: #ccc;
+}
+
+
+.create{
+  background-color: #212529;
+  height: 93.5vh;
+}
+
+
+button svg path{
+  color: #725AC1 !important;
+}
+.ql-snow.ql-toolbar button:hover .ql-stroke, .ql-snow .ql-toolbar button:hover .ql-stroke, .ql-snow.ql-toolbar button:focus .ql-stroke, .ql-snow .ql-toolbar button:focus .ql-stroke, .ql-snow.ql-toolbar button.ql-active .ql-stroke, .ql-snow .ql-toolbar button.ql-active .ql-stroke, .ql-snow.ql-toolbar .ql-picker-label:hover .ql-stroke, .ql-snow .ql-toolbar .ql-picker-label:hover .ql-stroke, .ql-snow.ql-toolbar .ql-picker-label.ql-active .ql-stroke, .ql-snow .ql-toolbar .ql-picker-label.ql-active .ql-stroke, .ql-snow.ql-toolbar .ql-picker-item:hover .ql-stroke, .ql-snow .ql-toolbar .ql-picker-item:hover .ql-stroke, .ql-snow.ql-toolbar .ql-picker-item.ql-selected .ql-stroke, .ql-snow .ql-toolbar .ql-picker-item.ql-selected .ql-stroke, .ql-snow.ql-toolbar button:hover .ql-stroke-miter, .ql-snow .ql-toolbar button:hover .ql-stroke-miter, .ql-snow.ql-toolbar button:focus .ql-stroke-miter, .ql-snow .ql-toolbar button:focus .ql-stroke-miter, .ql-snow.ql-toolbar button.ql-active .ql-stroke-miter, .ql-snow .ql-toolbar button.ql-active .ql-stroke-miter, .ql-snow.ql-toolbar .ql-picker-label:hover .ql-stroke-miter, .ql-snow .ql-toolbar .ql-picker-label:hover .ql-stroke-miter, .ql-snow.ql-toolbar .ql-picker-label.ql-active .ql-stroke-miter, .ql-snow .ql-toolbar .ql-picker-label.ql-active .ql-stroke-miter, .ql-snow.ql-toolbar .ql-picker-item:hover .ql-stroke-miter, .ql-snow .ql-toolbar .ql-picker-item:hover .ql-stroke-miter, .ql-snow.ql-toolbar .ql-picker-item.ql-selected .ql-stroke-miter, .ql-snow .ql-toolbar .ql-picker-item.ql-selected .ql-stroke-miter ,.ql-active{
+  stroke: #725AC1 !important;
+}
+.ql-snow.ql-toolbar button:hover .ql-fill, .ql-snow .ql-toolbar button:hover .ql-fill, .ql-snow.ql-toolbar button:focus .ql-fill, .ql-snow .ql-toolbar button:focus .ql-fill, .ql-snow.ql-toolbar button.ql-active .ql-fill, .ql-snow .ql-toolbar button.ql-active .ql-fill, .ql-snow.ql-toolbar .ql-picker-label:hover .ql-fill, .ql-snow .ql-toolbar .ql-picker-label:hover .ql-fill, .ql-snow.ql-toolbar .ql-picker-label.ql-active .ql-fill, .ql-snow .ql-toolbar .ql-picker-label.ql-active .ql-fill, .ql-snow.ql-toolbar .ql-picker-item:hover .ql-fill, .ql-snow .ql-toolbar .ql-picker-item:hover .ql-fill, .ql-snow.ql-toolbar .ql-picker-item.ql-selected .ql-fill, .ql-snow .ql-toolbar .ql-picker-item.ql-selected .ql-fill, .ql-snow.ql-toolbar button:hover .ql-stroke.ql-fill, .ql-snow .ql-toolbar button:hover .ql-stroke.ql-fill, .ql-snow.ql-toolbar button:focus .ql-stroke.ql-fill, .ql-snow .ql-toolbar button:focus .ql-stroke.ql-fill, .ql-snow.ql-toolbar button.ql-active .ql-stroke.ql-fill, .ql-snow .ql-toolbar button.ql-active .ql-stroke.ql-fill, .ql-snow.ql-toolbar .ql-picker-label:hover .ql-stroke.ql-fill, .ql-snow .ql-toolbar .ql-picker-label:hover .ql-stroke.ql-fill, .ql-snow.ql-toolbar .ql-picker-label.ql-active .ql-stroke.ql-fill, .ql-snow .ql-toolbar .ql-picker-label.ql-active .ql-stroke.ql-fill, .ql-snow.ql-toolbar .ql-picker-item:hover .ql-stroke.ql-fill, .ql-snow .ql-toolbar .ql-picker-item:hover .ql-stroke.ql-fill, .ql-snow.ql-toolbar .ql-picker-item.ql-selected .ql-stroke.ql-fill, .ql-snow .ql-toolbar .ql-picker-item.ql-selected .ql-stroke.ql-fill {
+  fill: #725AC1 !important;
+}
+.ql-snow.ql-toolbar button:hover, .ql-snow .ql-toolbar button:hover, .ql-snow.ql-toolbar button:focus, .ql-snow .ql-toolbar button:focus, .ql-snow.ql-toolbar button.ql-active, .ql-snow .ql-toolbar button.ql-active, .ql-snow.ql-toolbar .ql-picker-label:hover, .ql-snow .ql-toolbar .ql-picker-label:hover, .ql-snow.ql-toolbar .ql-picker-label.ql-active, .ql-snow .ql-toolbar .ql-picker-label.ql-active, .ql-snow.ql-toolbar .ql-picker-item:hover, .ql-snow .ql-toolbar .ql-picker-item:hover, .ql-snow.ql-toolbar .ql-picker-item.ql-selected, .ql-snow .ql-toolbar .ql-picker-item.ql-selected {
+  color: #725AC1 !important;
+}
+.quill{
+  color: #ccc !important;
+  height: 12rem;
+}
+.qui{
+  height: 15rem;
+}
+.fileinp{
+  color: #ccc;
+  margin: 1.5rem;
+}
+.fileinp::-webkit-file-upload-button{
+  height: 2rem;
+  width: 6rem;
+  background-color: #725AC1;
+  border: none;
+  border-radius: 6px;
+  color: white;
+}
+
+.post-con{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10vh;
+}
+.post{
+  display: flex;
+  flex-direction: row-reverse;
+  width: auto;
+  align-items: center;
+  justify-content: space-evenly;
+  color: white;
+  gap: 2rem;
+  border: 3px solid #725AC1;
+  border-radius: 0.8rem;
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+.imgDiv{
+  width: min(30vw,400px);
+  height: 30vh;
+}
+.postImg{
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+}
+.contentDiv{
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: min(40vw,300px);
+}
+.authTime{
+  margin-top: 0.5rem;
+  display: flex;
+  color: #ccc;
+  margin-bottom: 10px;
+}
+nav{
+  margin-bottom: 10vh;
+}
+.postTitle{
+  color: #725AC1;
+}
+.main{
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdown {
+  position: relative;
+  width: 200px;
+}
+.dropdown-btn {
+  background: #2e2e2e;
+  font-size: 18px;
+  width: 100%;
+  border: none;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.7em 0.5em;
+  border-radius: 5px;
+  cursor: pointer;
+  height: 5vh;
+}
+.name{
+  font-size: 15px;
+}
+.dropdown-btn img{
+  width: auto;
+  height: 4vh;
+}
+.arrow {
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 6px solid #fff;
+  transition: transform ease-in-out 0.3s;
+}
+.dropdown-content {
+  list-style: none;
+  position: absolute;
+  top: 2.5em;
+  width: 100%;
+  visibility: hidden;
+  overflow: hidden;
+}
+.dropdown-content li {
+  background: #2f3238;
+  border-radius: 0.5em;
+  position: relative;
+  left: 100%;
+  transition: 0.5s;
+  transition-delay: calc(60ms * var(--delay));
+}
+.dropdown-btn:focus + .dropdown-content li {
+  left: 0;
+}
+.dropdown-btn:focus + .dropdown-content {
+  visibility: visible;
+} 
+
+.dropdown-btn:focus > .arrow {
+  transform: rotate(180deg);
+}
+
+.dropdown-content li:hover {
+  background: #1d1f24;
+}
+.dropdown-content li a {
+  display: block;
+  padding: 0.7em 0.5em;
+  color: #fff;
+  margin: 0.1em 0;
+  text-decoration: none;
+}
+.dropdown-content li{
+  z-index: 100;
+}
+
+
+.blog-con{
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  width: 80vw;
+  margin: 10vh auto;
+  border: 2px solid #725AC1;
+  border-radius: 10px;
+  padding: 10px;
+}
+.blog-con .head{
+  color: white;
+  margin-top: 20px;
+  font-size: 4rem;
+}
+.blog-con .details{
+  width: 100%;
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+  color: #9286bf;
+  font-size: 1.5rem;
+}
+.img-con{
+ 
+  border-radius: 10px;
+  max-width: 80%;
+}
+.img-con img{
+  max-width: 100%;
+  border-radius: 10px;
+  width: auto;
+  height: 100%;
+}
+.content{
+  color: #ccc;
+  width: 90%;
+  font-size: 1.4rem;
+}
+.profile-con{
+  display: flex;
+  justify-content: center;
+}
+.profile{
+  margin-top: 10vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80vh;
+  gap: 1rem;
+  color: #9286bf;
+}
+.profile img{
+  height: max(20vh,200px);
+  width: auto;
+  border-radius: 50%;
+  border: 5px solid #725AC1;
+}
+
+.p-btns{
+  display: flex;
+  gap: 1rem;
+}
+.up-head{
+  margin: 0 auto;
+  margin-bottom: 5vh;
+  color: white;
+}
+
+
+
+
+.m-form {
+  background-color: #fff;
+  display: block;
+  padding: 1rem;
+  max-width: 350px;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.m-form-title {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-weight: 600;
+  text-align: center;
+  color: #000;
+}
+
+.m-input-container {
+  position: relative;
+}
+
+.m-input-container input, .form button {
+  outline: none;
+  border: 1px solid #e5e7eb;
+  margin: 8px 0;
+}
+
+.m-input-container input {
+  background-color: #fff;
+  padding: 1rem;
+  padding-right: 3rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  width: 300px;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.m-submit {
+  display: block;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  background-color: #4F46E5;
+  color: #ffffff;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  width: 100%;
+  border-radius: 0.5rem;
+  text-transform: uppercase;
+}
+
+.modal-content{
+  background-color: #212529;
+  color: #725AC1;
+}
+.m-btn{
+  background-color: #725AC1;
+  color: white;
+  border: 2px solid #212529;
+}
+.m-btn:hover{
+  background-color: #725AC1;
+  color: white;
+  background-color: #212529;
+  border: 2px solid #725AC1;
+}
+.p-btn{
+  color: white;
+  background-color: #725AC1;
+  border: 2px solid #212529;
+  padding: 5px;
+  border-radius: 7px;
+}
+.p-btn:hover{
+  color: #725AC1;
+  background-color: #212529;
+  border: 2px solid #725AC1;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+
+
+.l-Btn {
+  width: 140px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  border: none;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.089);
+  cursor: pointer;
+  background-color: transparent;
+  z-index: 1000;
+}
+
+.leftContainer {
+  width: 60%;
+  height: 100%;
+  background-color: #212529;
+  border: 2px solid #725AC1;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.leftContainer .like {
+  color: white;
+  font-weight: 600;
+}
+
+.likeCount {
+  width: 40%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 600;
+  position: relative;
+  background-color: #725AC1;
+}
+
+.likeCount::before {
+  height: 8px;
+  width: 8px;
+  position: absolute;
+  content: "";
+  background-color: #725AC1;
+  transform: rotate(45deg);
+  left: -4px;
+}
+
+.hoverbtn{
+  background-color: #725AC1;
+}
+.hovercount{
+  background-color: #212529;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border: 2px solid #725AC1;
+}
+
+.l-Btn:active .leftContainer {
+  background-color: #725AC1;
+}
+
+.l-Btn:active .leftContainer svg {
+  transform: scale(1.15);
+  transform-origin: top;
+}
+
+.blog-btns{
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
