@@ -16,8 +16,9 @@ function App() {
     <>
     <BlogState>
     <Routes>
-      <Route exact path="/login" element={<Login/>} />
       <Route exact path="/" element={<Main/>} />
+      <Route exact path="/blog" element={<Main/>} />
+      <Route exact path="/login" element={<Login/>} />
       <Route exact path="/signup" element={<SignUp/>} />
       <Route exact path="/create" element={<CreatePost/>} />
       <Route exact path="/post/:id" element={<Blog/>} />

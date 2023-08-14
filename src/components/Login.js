@@ -3,6 +3,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 import { LogInRoute } from '../utils/ApiRoutes';
+import Loader from '../assets/loader.gif'; 
+
 const Login = () => {
   let navigate = useNavigate();
   useEffect(() => {
@@ -19,10 +21,12 @@ const Login = () => {
         theme: "dark",
     }
     const [cred, setcred] = useState({ email: "", password: "" })
+    const [load, setload] = useState(false);
     const onchange = (e) => {
         setcred({ ...cred, [e.target.name]: e.target.value });
     }
     const handlesubmit = async (e) => {
+      setload(true);
         e.preventDefault();
         const response = await fetch(LogInRoute,
             {
@@ -34,9 +38,10 @@ const Login = () => {
             }
         )
         const json = await response.json();
+        setload(false);
         if (json.success) {
-            localStorage.setItem('token', json.authtoken)
-            navigate('/');
+          localStorage.setItem('token', json.authtoken)
+          navigate('/');
         }
         else {
             toast.error(json.error, toastoptions)
@@ -45,7 +50,8 @@ const Login = () => {
 
   return (
     <div className='login-con'>
-      <form className="form" onSubmit={handlesubmit}>
+      { load?<img src={Loader} alt="Loading" />: 
+        <form className="form" onSubmit={handlesubmit}>
         <p className="title">Login</p>
         <p className="message">Signup now and get to enjoy our app. </p>
         <label>
@@ -62,6 +68,7 @@ const Login = () => {
           Don't have an acount ? <Link to="/signup">SignUp</Link>{" "}
         </p>
       </form>
+      }
       <ToastContainer/>
     </div>
   )

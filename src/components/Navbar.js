@@ -14,7 +14,7 @@ const Navbar = () => {
   return (
     <nav>
       <div className="logo">
-        <h2 style={{fontWeight:"bold"}}> <Link style={{textDecoration:"none",color:"#212529"}} to="/">.Blog</Link></h2>
+        <div style={{fontWeight:"bold", fontSize:"30px"}}> <Link style={{textDecoration:"none",color:"#212529"}} to="/">.Blog</Link></div>
       </div>
         <div className="dropdown">
           <button className="dropdown-btn">

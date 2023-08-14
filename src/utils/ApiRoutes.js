@@ -1,4 +1,4 @@
-export const host = 'https://blog-backend-upjh.onrender.com';
+export const host = 'http://localhost:5000';
 export const SignUpRoute = `${host}/api/auth/createuser`;
 export const LogInRoute = `${host}/api/auth/login`;
 export const LogoutRoute = `${host}/api/auth/logout`;

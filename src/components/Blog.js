@@ -3,7 +3,7 @@ import blogContext from '../context/blogs/blogContext'
 import { useNavigate, useParams } from 'react-router-dom';
 import { format } from 'date-fns';
 import Navbar from './Navbar'
-import { CommentRoute, CommentsRoute, DeleteRoute, LikesRoute, isLikedRoute } from '../utils/ApiRoutes';
+import { CommentRoute, CommentsRoute, DeleteRoute, LikesRoute, host, isLikedRoute } from '../utils/ApiRoutes';
 import { ToastContainer, toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 import CommentSection from './CommentSection';
@@ -97,6 +97,9 @@ export default function Blog() {
   const executeScroll = () => ref.current.scrollIntoView()
       const {id}=useParams();
       useEffect(() => {
+        if(!localStorage.getItem('token')){
+          navigate('/login');
+        };
         getBlog(id);
         getUser();
         noOfLikes(id)
@@ -158,12 +161,13 @@ export default function Blog() {
         </div>
       </div>
             <div className="img-con">
-          <img src={`https://blog-backend-upjh.onrender.com/${blog.cover}`} alt="" />
+          <img src={`${host}/${blog.cover}`} alt="" />
           </div>
-          <p ref={ref} className='content' dangerouslySetInnerHTML={{ __html: blog.content }}></p>
+          <p className='content' dangerouslySetInnerHTML={{ __html: blog.content }}></p>
     </div>
         
       }
+      <div ref={ref}></div>
       <CommentSection comment={comment} comments={comments} putComment={putComment} setcomment={setcomment}/>      
       <ToastContainer/>
     </div>

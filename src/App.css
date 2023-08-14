@@ -240,7 +240,8 @@ nav{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 5vw;
+  padding-left: 5vw;
+  padding-right: 8vw;
   z-index: 500;
 }
 
@@ -397,6 +398,9 @@ button svg path{
   border-radius: 0.8rem;
   padding: 2rem;
   margin-bottom: 2rem;
+}
+.post:active{
+  border-color: white;
 }
 .imgDiv{
   width: min(40vw,400px);
@@ -861,7 +865,7 @@ nav{
   border-radius: 10px;
   border: 2px solid #9286bf;
   color: #725AC1;
-  width: 50vw !important;
+  width: 45vw !important;
   margin-bottom: 0.5rem;
   margin-left: 1vw;
 }
@@ -898,6 +902,9 @@ nav{
   .dropdown{
     min-width: 50px;
   }
+  .blog-con{
+    width: 98vw;
+  }
   .blog-con .head{
     font-size: 30px;
   }
@@ -928,6 +935,9 @@ nav{
   }
   .postTitle,.postSummary{
     text-align: center;
+  }
+  .profile h2{
+    font-size: 20px;
   }
 }
 

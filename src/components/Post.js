@@ -1,7 +1,7 @@
 import {format} from 'date-fns'
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { LikesRoute, isLikedRoute } from '../utils/ApiRoutes';
+import { LikesRoute, host, isLikedRoute } from '../utils/ApiRoutes';
 import { ToastContainer, toast } from 'react-toastify';
 const Post = ({_id,title,summary,cover,createdAt,author}) => {
   const toastoptions = {
@@ -14,7 +14,6 @@ const Post = ({_id,title,summary,cover,createdAt,author}) => {
   const navigate = useNavigate();
   const [likes, setlikes] = useState(0);
       const [isliked, setisliked] = useState(false);
-
       const isLikedFunc=async(id)=>{
         const response  = await fetch(`${isLikedRoute}/${id}`,{
           method: 'put',
@@ -56,7 +55,7 @@ const Post = ({_id,title,summary,cover,createdAt,author}) => {
   return (
     <div className='post' id='post'>
       <div className='imgDiv' onClick={()=>{navigate(`/post/${_id}`)}}>
-          <img className='postImg' src={`https://blog-backend-upjh.onrender.com/${cover}`} alt="IMAGE" />
+          <img className='postImg' src={`${host}/${cover}`} alt="IMAGE" />
       </div>
       <div className='contentDiv' >
         <h2 className='postTitle'onClick={()=>{navigate(`/post/${_id}`)}} >{title}</h2>

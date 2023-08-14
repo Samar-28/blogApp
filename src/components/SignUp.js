@@ -3,9 +3,11 @@ import { Link, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 import { SignUpRoute } from "../utils/ApiRoutes";
+import Loader from '../assets/loader.gif'; 
 
 const SignUp = () => {
     let navigate = useNavigate();
+    const [load, setload] = useState(false);
     useEffect(() => {
       if(localStorage.getItem('token')){
         navigate('/')
@@ -23,8 +25,9 @@ const SignUp = () => {
         setcred({ ...cred, [e.target.name]: e.target.value });
     }
     const handlesubmit = async (e) => {
-        e.preventDefault();
-        if (cred.spassword === cred.repassword) {
+      e.preventDefault();
+      if (cred.spassword === cred.repassword) {
+          setload(true);
 
             const creds = { name: cred.name, email: cred.semail, password: cred.spassword }
             const response = await fetch(SignUpRoute,
@@ -38,22 +41,24 @@ const SignUp = () => {
                 }
             )
             const json = await response.json();
+            setload(false);
             if (json.success) {
-                localStorage.setItem('token', json.authtoken)
-                navigate('/setavatar');
+              localStorage.setItem('token', json.authtoken)
+              navigate('/setavatar');
             }
             else {
-                toast.error(json.error, toastoptions)
+              toast.error(json.error, toastoptions)
             }
-        }
-        else {
-            toast.error("Password Doesn't Match !", toastoptions)
+          }
+          else {
+          toast.error("Password Doesn't Match !", toastoptions)
         }
     }
 
   return (
     <div className="signup-con">
-      <form className="form" onSubmit={handlesubmit}>
+      { load?<img src={Loader} alt="Loading" />:
+        <form className="form" onSubmit={handlesubmit}>
         <p className="title">Register </p>
         <p className="message">Signup now and get to enjoy our app. </p>
           <label>
@@ -79,6 +84,7 @@ const SignUp = () => {
           Already have an acount ? <Link to="/login">Signin</Link>{" "}
         </p>
       </form>
+      }
       <ToastContainer/>
     </div>
   );
