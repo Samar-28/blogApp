@@ -1,5 +1,7 @@
 # Instructions for Local Build
 
+# Deployed app - https://xxpython28xx.github.io/blog/
+
 ## In root directory (/blog) run :-
 
 ### npm install
