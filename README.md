@@ -1,6 +1,8 @@
 # Instructions for Local Build
 
 ## In root directory (/blog) run :-
+
+### npm install
 ### npm start
 
 ### cd backend
