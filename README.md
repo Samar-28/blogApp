@@ -1,6 +1,6 @@
 # Instructions for Local Build
 
-# Deployed app - https://xxpython28xx.github.io/blog/
+# Deployed app - https://samar-28.github.io/blogApp/
 
 ## In root directory (/blog) run :-
 
